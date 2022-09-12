@@ -59,22 +59,22 @@ class AutomibileForm extends React.Component {
 
   handleChangeYear(event) {
     const value = event.target.value;
-    this.setState({ ends: value });
+    this.setState({ year: value });
   }
 
   handleChangeColor(event) {
     const value = event.target.value;
-    this.setState({ description: value });
+    this.setState({ color: value });
   }
 
   handleChangeModel(event) {
     const value = event.target.value;
-    this.setState({ max_attendees: value });
+    this.setState({ model: value });
   }
 
   handleChangeVin(event) {
     const value = event.target.value;
-    this.setState({ location: value });
+    this.setState({ vin: value });
   }
 
   render() {
