@@ -4,43 +4,38 @@ class AutomibileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      starts: '',
-      ends: '',
-      description: '',
-      max_presentations: '',
-      max_attendees: '',
-      location: '',
-      locations: [],
+        color:'',
+        year:'',
+        vin:'',
+        model:'',
+        models:[]
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChangeDescription = this.handleChangeDescription.bind(this);
-    this.handleChangeEnds = this.handleChangeEnds.bind(this);
-    this.handleChangeLocation = this.handleChangeLocation.bind(this);
-    this.handleChangeMaxAttendees = this.handleChangeMaxAttendees.bind(this);
-    this.handleChangeMaxPresentations = this.handleChangeMaxPresentations.bind(this);
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeStarts = this.handleChangeStarts.bind(this);
+    this.handleChangeColor = this.handleChangeColor.bind(this);
+    this.handleChangeYear = this.handleChangeYear.bind(this);
+    this.handleChangeVin = this.handleChangeVin.bind(this);
+    this.handleChangeModel = this.handleChangeModel.bind(this);
   }
 
   async componentDidMount() {
-    const makesurl = 'http://localhost:8000/api/manufacturers/';
+    const modelsUrl = 'http://localhost:8100/api/models/';
 
-    const makesresponse = await fetch(makesurl);
+    const modelsResponse = await fetch(modelsUrl);
 
-    if (makesresponse.ok) {
-      const makesdata = await response.json();
-      this.setState({ locations: data.locations });
+    if (modelsResponse.ok) {
+      const modelsData = await modelsResponse.json();
+      console.log(modelsData.models)
+      this.setState({ models: modelsData.models });
     }
   }
 
   async handleSubmit(event) {
     event.preventDefault();
     const data = {...this.state};
-    delete data.locations;
+    delete data.models;
 
-    const locationUrl = 'http://localhost:8000/api/conferences/';
+    const autoUrl = 'http://localhost:8100/api/automobiles/';
     const fetchConfig = {
       method: "post",
       body: JSON.stringify(data),
@@ -48,53 +43,36 @@ class AutomibileForm extends React.Component {
         'Content-Type': 'application/json',
       },
     };
-    const response = await fetch(locationUrl, fetchConfig);
+    const response = await fetch(autoUrl, fetchConfig);
     if (response.ok) {
-      const newConference = await response.json();
-      console.log(newConference);
+      const newAutomobile = await response.json();
+      console.log(newAutomobile);
       this.setState({
-        name: '',
-        starts: '',
-        ends: '',
-        description: '',
-        max_presentations: '',
-        max_attendees: '',
-        location: '',
+        color:'',
+        year:'',
+        vin:'',
+        model:'',
+        models:[]
       });
     }
   }
 
-  handleChangeName(event) {
-    const value = event.target.value;
-    this.setState({ name: value });
-  }
-
-  handleChangeStarts(event) {
-    const value = event.target.value;
-    this.setState({ starts: value });
-  }
-
-  handleChangeEnds(event) {
+  handleChangeYear(event) {
     const value = event.target.value;
     this.setState({ ends: value });
   }
 
-  handleChangeDescription(event) {
+  handleChangeColor(event) {
     const value = event.target.value;
     this.setState({ description: value });
   }
 
-  handleChangeMaxPresentations(event) {
-    const value = event.target.value;
-    this.setState({ max_presentations: value });
-  }
-
-  handleChangeMaxAttendees(event) {
+  handleChangeModel(event) {
     const value = event.target.value;
     this.setState({ max_attendees: value });
   }
 
-  handleChangeLocation(event) {
+  handleChangeVin(event) {
     const value = event.target.value;
     this.setState({ location: value });
   }
@@ -104,38 +82,26 @@ class AutomibileForm extends React.Component {
       <div className="row">
         <div className="offset-3 col-6">
           <div className="shadow p-4 mt-4">
-            <h1>Create a new conference</h1>
-            <form onSubmit={this.handleSubmit} id="create-conference-form">
+            <h1>Create a new automobile</h1>
+            <form onSubmit={this.handleSubmit} id="create-automobile-form">
               <div className="form-floating mb-3">
-                <input onChange={this.handleChangeName} placeholder="Name" required type="text" name="name" id="name" className="form-control" />
-                <label htmlFor="name">Name</label>
-              </div>
-              <div className="form-floating mb-3">
-                <input onChange={this.handleChangeStarts} placeholder="Starts" required type="date" name="starts" id="starts" className="form-control" />
-                <label htmlFor="starts">Starts</label>
-              </div>
-              <div className="form-floating mb-3">
-                <input onChange={this.handleChangeEnds} placeholder="Ends" required type="date" name="ends" id="ends" className="form-control" />
-                <label htmlFor="ends">Ends</label>
+                <input onChange={this.handleChangeYear} placeholder="Ends" required type="number" name="ends" id="ends" className="form-control" />
+                <label htmlFor="ends">Year</label>
               </div>
               <div className="mb-3">
-                <label htmlFor="description">Description</label>
-                <textarea onChange={this.handleChangeDescription} className="form-control" id="description" rows="3" name="description" className="form-control"></textarea>
+                <label htmlFor="color">Color</label>
+                <input onChange={this.handleChangeColor} required type = 'text' className="form-control" id="color" name="color"></input>
               </div>
               <div className="form-floating mb-3">
-                <input onChange={this.handleChangeMaxPresentations} placeholder="Maximum presentations" required type="number" name="max_presentations" id="max_presentations" className="form-control" />
-                <label htmlFor="max_presentations">Maximum presentations</label>
-              </div>
-              <div className="form-floating mb-3">
-                <input onChange={this.handleChangeMaxAttendees} placeholder="Maximum attendees" required type="number" name="max_attendees" id="max_attendees" className="form-control" />
-                <label htmlFor="max_attendees">Maximum attendees</label>
+                <input onChange={this.handleChangeVin} placeholder="VIN" required type="text" name="vin" id="vin" className="form-control" />
+                <label htmlFor="vin">VIN</label>
               </div>
               <div className="mb-3">
-                <select onChange={this.handleChangeLocation} required name="location" id="location" className="form-select">
-                  <option value="">Choose a location</option>
-                  {this.state.locations.map(location => {
+                <select onChange={this.handleChangeModel} required name="location" id="location" className="form-select">
+                  <option value="">Choose a model</option>
+                  {this.state.models.map(model => {
                     return (
-                      <option key={location.id} value={location.id}>{location.name}</option>
+                      <option key={model.id} value={model.id}>{model.name}</option>
                     )
                   })}
                 </select>
