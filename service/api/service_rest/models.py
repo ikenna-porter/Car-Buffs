@@ -25,8 +25,7 @@ class Appointment(models.Model):
 
 
 class AutomobileVO(models.Model):
-    vin = models.PositiveSmallIntegerField()
-    href = models.URLField(max_length=300)
+    vin = models.CharField(max_length=17, unique=True)
 
     def __str__(self):
         return str(self.vin)
