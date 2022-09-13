@@ -9,6 +9,9 @@ import SalesForm from './routes/sales/salesform';
 import Representatives from './routes/sales/representatives';
 import Representative from './routes/sales/representative';
 import Sales from './routes/sales/sales';
+import VehicleModels from './routes/inventory/VehicleModels'
+import VehicleModelsForm from './routes/inventory/VehicleModelsForm'
+import Manufacturers from './routes/inventory/Manufacturers';
 
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
           <Route path = "/sales/representatives" element = {<Representatives/>}/>
           <Route path = "/sales/representatives/:id" element = {<Representative/>}/>
           <Route path = "/sales" element = {<Sales/>}/>
+          <Route path="models/form" element={<VehicleModelsForm />}></Route>
+          <Route path="models" element={<VehicleModels />}></Route>
+          <Route path="manufacturers" element={<Manufacturers />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
