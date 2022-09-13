@@ -29,6 +29,6 @@ class TransactionRecordModel(models.Model):
     car = models.ForeignKey(AutomobileVO,related_name="transaction_records", on_delete=models.PROTECT)
     rep = models.ForeignKey(SalesRepModel,related_name="transaction_records", on_delete=models.PROTECT)
     customer = models.ForeignKey(CustomerModel,related_name="transaction_records", on_delete=models.PROTECT)
-    price = models.DecimalField(decimal_places=2, max_digits=12)
+    price = models.FloatField()
     def __str__(self):
         return f"Sale for {self.price} made by {self.rep.name} to {self.customer.name}"
