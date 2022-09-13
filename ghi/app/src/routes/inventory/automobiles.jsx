@@ -1,13 +1,13 @@
 import React, { useState,useEffect} from 'react';
 //import {useNavigate} from 'react-router-dom';
 
-function HatsList(){
+function Automobiles(){
     //const navigate = useNavigate()
-    const [cars, updateHats]= useState()
+    const [cars, updateCars]= useState()
     async function fetchData(){
-        let resp = await fetch("http://localhost:8100/automobiles")
+        let resp = await fetch("http://localhost:8100/api/automobiles")
         let carsJson = await resp.json()
-        updateHats(carsJson)
+        updateCars(carsJson.autos)
         }
         
     useEffect(()=>{
@@ -19,14 +19,13 @@ function HatsList(){
     if (cars === undefined) {
         return 'Loading...';
     }
-
     return(
             
         <div className = "card-group">
             {cars.map(car=>{
                 return(
                     
-                    <div className="card">
+                    <div className="card" key = {car.id}>
                         <img alt = "" src= { car.model.picture_url } className="card-img-top"/>
                         <div className="card-body">
                         <h5 className="card-title">Car</h5>
@@ -35,7 +34,7 @@ function HatsList(){
                         <p className= "card-text">Color: {car.color}</p>
                         </div>
                         <div className="card-footer">
-                            Inquire for price
+                            Inquire at local dealer for price
                         </div>
                     </div>
                 )
@@ -45,4 +44,4 @@ function HatsList(){
 }
 
 
-export default HatsList
+export default Automobiles
