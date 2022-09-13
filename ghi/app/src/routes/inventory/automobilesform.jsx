@@ -21,7 +21,7 @@ class AutomibileForm extends React.Component {
   async componentDidMount() {
     const modelsUrl = 'http://localhost:8100/api/models/';
 
-    const modelsResponse = await fetch(modelsUrl);
+    const modelsResponse = await fetch(modelsUrl, {method:"get"});
 
     if (modelsResponse.ok) {
       const modelsData = await modelsResponse.json();
@@ -85,8 +85,8 @@ class AutomibileForm extends React.Component {
             <h1>Create a new automobile</h1>
             <form onSubmit={this.handleSubmit} id="create-automobile-form">
               <div className="form-floating mb-3">
-                <input onChange={this.handleChangeYear} placeholder="Ends" required type="number" name="ends" id="ends" className="form-control" />
-                <label htmlFor="ends">Year</label>
+                <input onChange={this.handleChangeYear} placeholder="Year" required type="number" name="year" id="year" className="form-control" />
+                <label htmlFor="year">Year</label>
               </div>
               <div className="mb-3">
                 <label htmlFor="color">Color</label>
