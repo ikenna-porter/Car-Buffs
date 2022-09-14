@@ -11,7 +11,7 @@ import Representative from './routes/sales/representative';
 import Sales from './routes/sales/sales';
 import VehicleModels from './routes/inventory/VehicleModels'
 import VehicleModelsForm from './routes/inventory/VehicleModelsForm'
-import Manufacturers from './routes/inventory/Manufacturers';
+import Manufacturers from './routes/inventory/manufacturers';
 import Automobiles from './routes/inventory/automobiles';
 import TechnicianForm from './routes/services/TechnicianForm';
 import Appointments from './routes/services/Appointments';
