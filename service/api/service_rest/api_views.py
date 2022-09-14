@@ -29,6 +29,7 @@ class AppointmentsListEncoder(ModelEncoder):
     "time",
     "technician",
     "service",
+    "id",
     ]
 
     def get_extra_data(self, o):
@@ -66,24 +67,16 @@ def list_technicians(request):
 
 
 @require_http_methods(["GET", "POST"])
-def list_appointments(request, vin=None):
+def list_appointments(request):
+
     if request.method == "GET":
-        print(vin)
-        if (vin):
-            appointments = Appointment.objects.filter(automobile=AutomobileVO.objects.get(vin=vin))
-            for app in appointments:
-                app.date = json.dumps({"date":app.date}, default=str)
-                app.time = json.dumps({"time":app.time}, default=str)
-
-            return JsonResponse(appointments, encoder=AppointmentsListEncoder, safe=False)
-
-        else:
-            appointments = Appointment.objects.all()
-            for app in appointments:
-                app.date = json.dumps({"date":app.date}, default=str)
-                app.time = json.dumps({"time":app.time}, default=str)
+        appointments = Appointment.objects.all()
+        for app in appointments:
+            app.date = json.dumps({"date":app.date}, default=str)
+            app.time = json.dumps({"time":app.time}, default=str)
 
         return JsonResponse(appointments, encoder=AppointmentsListEncoder, safe=False)
+
     else: #POST
         content = json.loads(request.body)
 
@@ -103,3 +96,24 @@ def list_services(request):
         encoder=ServiceEncoder,
         safe=False
     )
+
+@require_http_methods(["GET", "DELETE"])
+def appointment_detail(request, vin=None):
+    if request.method == "GET":
+        if (vin):
+            appointments = Appointment.objects.filter(automobile=AutomobileVO.objects.get(vin=vin))
+            for app in appointments:
+                app.date = json.dumps({"date":app.date}, default=str)
+                app.time = json.dumps({"time":app.time}, default=str)
+
+            return JsonResponse(appointments, encoder=AppointmentsListEncoder, safe=False)
+    else:
+        content = json.loads(request.body)
+        print(content)
+        Appointment.objects.get(id=content["id"]).delete()
+        return JsonResponse(
+            {"Deleted": "Content deleted"}
+        )
+
+
+

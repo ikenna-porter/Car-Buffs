@@ -74,7 +74,7 @@ class AppointmentForm extends React.Component {
             <div className="row">
               <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
-                  <h2>Create an Appointment</h2>
+                  <h2 className="mb-3">Create an Appointment</h2>
                   <form onSubmit={this.handleSubmission} id="create-transaction-form">
                     <div className="form-floating mb-3">
                       <input onChange={this.handleChange} placeholder="VIN" required type="text" name="automobile" id="automobile" className="form-control" />

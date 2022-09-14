@@ -48,7 +48,7 @@ class TechnicianForm extends React.Component {
             <div className="row">
               <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
-                  <h1>Create a Technician</h1>
+                  <h2 className="mb-3">Create a Technician</h2>
                   <form onSubmit={this.handleSubmission} id="create-automobile-form">
                     <div className="form-floating mb-3">
                       <input onChange={this.handleChange} required type = 'text' className="form-control" id="name" name="name" placeholder='Name'></input>

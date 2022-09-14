@@ -30,17 +30,33 @@ class Appointments extends React.Component {
             data.map(car => car["time"] = JSON.parse(car.time))
             data.map(car => car["time"] = car.time.time.slice(0, 5))
             
-
             this.setState({data})
             // console.log(this.state)
         }
-        
+    }
+
+    handleDeletion = async (auto) => {
+      console.log(auto.id)
+      const url = `http://localhost:8080/api/appointments/${auto.automobile.vin}`
+      const fetchCongif = {
+        method: "DELETE",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(auto)
+      }
+
+      const response = await fetch(url, fetchCongif)
+
+      if (response.ok) {
+        window.location.reload();
+      }
     }
 
     render() {
         return (
             <div>
-                <h2>Service Appointments</h2>
+                <h2 className="my-4">Service Appointments</h2>
                 <table className="table table-striped">
                   <thead>
                     <tr>
@@ -65,7 +81,10 @@ class Appointments extends React.Component {
                           <td>{ auto.technician.name }</td>
                           <td>{ auto.service.name }</td>
                           <td>VIP?</td>
-                          <td>BUTTONS GO HERE</td>
+                          <td>
+                            <button onClick={e => this.handleDeletion(auto)} type="button" className="btn btn-primary btn-sm btn-danger">Cancel</button>
+                            <button onClick={e => this.handleDeletion(auto)} type="button" className="btn btn-secondary btn-sm btn-success">Finished</button>
+                          </td>
                         </tr>
                       );
                     })}
