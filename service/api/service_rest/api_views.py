@@ -14,7 +14,7 @@ class TechnicianEncoder(ModelEncoder):
 
 class AutomobileVOEncoder (ModelEncoder):
     model = AutomobileVO
-    properties = ["vin"]
+    properties = ["vin", "vip"]
 
 class ServiceEncoder(ModelEncoder):
     model = Service

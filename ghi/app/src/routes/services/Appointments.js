@@ -29,9 +29,17 @@ class Appointments extends React.Component {
             //Parses time string and then slices the seconds off string
             data.map(car => car["time"] = JSON.parse(car.time))
             data.map(car => car["time"] = car.time.time.slice(0, 5))
+
+            for (const car of data) {
+              if (car.automobile.vip) {
+                car.automobile.vip = "Yes"
+              } else {
+                car.automobile.vip = "No"
+              }
+            }
             
+            console.log(data)
             this.setState({data})
-            // console.log(this.state)
         }
     }
 
@@ -80,9 +88,9 @@ class Appointments extends React.Component {
                           <td>{ auto.time }</td>
                           <td>{ auto.technician.name }</td>
                           <td>{ auto.service.name }</td>
-                          <td>VIP?</td>
+                          <td>{ auto.automobile.vip}</td>
                           <td>
-                            <button onClick={e => this.handleDeletion(auto)} type="button" className="btn btn-primary btn-sm btn-danger">Cancel</button>
+                            <button onClick={e => this.handleDeletion(auto)} type="button" className="mx-1 btn btn-primary btn-sm btn-danger">Cancel</button>
                             <button onClick={e => this.handleDeletion(auto)} type="button" className="btn btn-secondary btn-sm btn-success">Finished</button>
                           </td>
                         </tr>

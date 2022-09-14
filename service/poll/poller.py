@@ -23,13 +23,13 @@ def poll():
             for automobile in content["autos"]:
                 AutomobileVO.objects.update_or_create(
                     vin=automobile["vin"],
-                    defaults={"vin": automobile["vin"]}
+                    defaults={"vin": automobile["vin"], "vip": True}
                 )
 
         except Exception as e:
             print(e, file=sys.stderr)
 
-        time.sleep(10)
+        time.sleep(60)
 
 
 if __name__ == "__main__":

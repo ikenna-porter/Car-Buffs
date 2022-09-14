@@ -26,6 +26,7 @@ class Appointment(models.Model):
 
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length=17, unique=True)
+    vip = models.BooleanField(null=True, default=False)
 
     def __str__(self):
         return str(self.vin)
