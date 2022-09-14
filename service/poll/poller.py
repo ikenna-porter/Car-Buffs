@@ -28,7 +28,6 @@ def poll():
 
         except Exception as e:
             print(e, file=sys.stderr)
-            print('didnt work')
 
         time.sleep(10)
 
