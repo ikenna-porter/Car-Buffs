@@ -29,12 +29,18 @@ function App() {
           <Route path="/inventory/automobiles/new" element = {<AutomibileForm />}/>
           <Route path = "/inventory/manufacturers/new" element={<ManufacturersForm/>}/>
           <Route path = "/inventory/automobiles" element = {<Automobiles/>}/>
-          <Route path = "/sales/customers/new" element = {<CustomerForm/>}/>
-          <Route path = "/sales/representatives/new" element = {<RepresentativesForm/>}/>
-          <Route path = "/sales/transactions/new" element = {<SalesForm/>}/>
-          <Route path = "/sales/representatives" element = {<Representatives/>}/>
-          <Route path = "/sales/representatives/:id" element = {<Representative/>}/>
-          <Route path = "/sales/transactions" element = {<Sales/>}/>
+          <Route path = "sales">
+            <Route path = "customers/new" element = {<CustomerForm/>}/>
+            <Route path = "representatives">
+              <Route path = "" element = {<Representatives/>}/>
+              <Route path = "new" element = {<RepresentativesForm/>}/>
+              <Route path = ":id" element = {<Representative/>}/>
+            </Route>
+            <Route path = "transactions">
+              <Route path = "" element = {<Sales/>}/>
+              <Route path = "new" element = {<SalesForm/>}/>
+            </Route>
+          </Route>
           <Route path="inventory/models/new" element={<VehicleModelsForm />}></Route>
           <Route path="inventory/models" element={<VehicleModels />}></Route>
           <Route path="inventory/manufacturers" element={<Manufacturers />}></Route>

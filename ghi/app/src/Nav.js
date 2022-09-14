@@ -11,7 +11,7 @@ function Nav() {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item dropdown">
-          <NavLink className="nav-link dropdown-toggle" to="/sales" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <NavLink className="nav-link dropdown-toggle" to="/sale" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Sales
           </NavLink>
           <ul className="dropdown-menu">
@@ -20,7 +20,6 @@ function Nav() {
             <li><NavLink className="dropdown-item" to="/sales/representatives">Sales representatives</NavLink></li>
             <li><NavLink className="dropdown-item" to="/sales/representatives/new">New representative</NavLink></li>
             <li><NavLink className="dropdown-item" to="/sales/customers/new">New customer</NavLink></li>
-            
           </ul>
         </li>
         <li className="nav-item dropdown">
@@ -35,7 +34,7 @@ function Nav() {
           </ul>
         </li>
         <li className="nav-item dropdown">
-          <NavLink className="nav-link dropdown-toggle" to="/inventory" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <NavLink className="nav-link dropdown-toggle" to="/inv" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Inventory
           </NavLink>
           <ul className="dropdown-menu">
@@ -45,7 +44,6 @@ function Nav() {
             <li><NavLink className="dropdown-item" to="/inventory/manufacturers/new">New Manufacturer</NavLink></li>
             <li><NavLink className="dropdown-item" to="/inventory/models">Vehicle Models</NavLink></li>
             <li><NavLink className="dropdown-item" to="/inventory/models/new">New Model</NavLink></li>
-            
           </ul>
         </li>
         
