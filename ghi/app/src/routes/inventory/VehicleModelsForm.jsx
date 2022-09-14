@@ -37,7 +37,6 @@ class VehicleModelsForm extends React.Component {
         const url = "http://localhost:8100/api/models/";
         const data = {...this.state}
         delete data.manufacturers;
-        console.log(data);
 
         const fetchConfig = {
             method: "POST",
@@ -49,7 +48,6 @@ class VehicleModelsForm extends React.Component {
 
         if (response.ok) {
             this.setState({
-                manufacturers: [],
                 name: '',
                 picture_url: '',
                 manufacturer_id: '',

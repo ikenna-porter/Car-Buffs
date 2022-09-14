@@ -14,7 +14,7 @@ class TechnicianEncoder(ModelEncoder):
 
 class AutomobileVOEncoder (ModelEncoder):
     model = AutomobileVO
-    properties = ["vin"]
+    properties = ["vin", "vip"]
 
 class ServiceEncoder(ModelEncoder):
     model = Service
@@ -29,6 +29,7 @@ class AppointmentsListEncoder(ModelEncoder):
     "time",
     "technician",
     "service",
+    "id",
     ]
 
     def get_extra_data(self, o):
@@ -38,15 +39,14 @@ class AppointmentsListEncoder(ModelEncoder):
         "technician" : TechnicianEncoder(), 
         "service": ServiceEncoder(), 
         "automobile": AutomobileVOEncoder(),
-        "date": DateEncoder(),
         }
 
 
 
-@require_http_methods(["GET"])
-def service_list(request):
-    service = Service.objects.all()
-    return JsonResponse({"service": service}, encoder=ServiceEncoder, safe=False)
+# @require_http_methods(["GET"])
+# def service_list(request):
+#     service = Service.objects.all()
+#     return JsonResponse({"service": service}, encoder=ServiceEncoder, safe=False)
 
 
 @require_http_methods(["GET"])
@@ -68,9 +68,15 @@ def list_technicians(request):
 
 @require_http_methods(["GET", "POST"])
 def list_appointments(request):
+
     if request.method == "GET":
         appointments = Appointment.objects.all()
+        for app in appointments:
+            app.date = json.dumps({"date":app.date}, default=str)
+            app.time = json.dumps({"time":app.time}, default=str)
+
         return JsonResponse(appointments, encoder=AppointmentsListEncoder, safe=False)
+
     else: #POST
         content = json.loads(request.body)
 
@@ -78,16 +84,36 @@ def list_appointments(request):
         content["technician"] = Technician.objects.get(employee_id=content["technician"])
         content["service"] = Service.objects.get(name=content["service"])
 
-        Appointment.objects.create(**content)
+        appointment = Appointment.objects.create(**content)
 
-        return JsonResponse({"message": "appointment created"})
+        return JsonResponse(appointment, encoder=AppointmentsListEncoder, safe=False)
+
+@require_http_methods(["GET"])
+def list_services(request):
+    services = Service.objects.all()
+    return JsonResponse(
+        {"services": services},
+        encoder=ServiceEncoder,
+        safe=False
+    )
+
+@require_http_methods(["GET", "DELETE"])
+def appointment_detail(request, vin=None):
+    if request.method == "GET":
+        if (vin):
+            appointments = Appointment.objects.filter(automobile=AutomobileVO.objects.get(vin=vin))
+            for app in appointments:
+                app.date = json.dumps({"date":app.date}, default=str)
+                app.time = json.dumps({"time":app.time}, default=str)
+
+            return JsonResponse(appointments, encoder=AppointmentsListEncoder, safe=False)
+    else:
+        content = json.loads(request.body)
+        print(content)
+        Appointment.objects.get(id=content["id"]).delete()
+        return JsonResponse(
+            {"Deleted": "Content deleted"}
+        )
 
 
-@require_http_methods
-def appointment_detail():
-    pass
 
-
-@require_http_methods
-def list_services():
-    pass

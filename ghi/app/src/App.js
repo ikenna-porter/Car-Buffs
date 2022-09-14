@@ -13,6 +13,11 @@ import VehicleModels from './routes/inventory/VehicleModels'
 import VehicleModelsForm from './routes/inventory/VehicleModelsForm'
 import Manufacturers from './routes/inventory/manufacturers';
 import Automobiles from './routes/inventory/automobiles';
+import TechnicianForm from './routes/services/TechnicianForm';
+import Appointments from './routes/services/Appointments';
+import AppointmentForm from './routes/services/AppointmentForm';
+import AppointmentsHistory from './routes/services/AppointmentHistory';
+
 
 function App() {
   return (
@@ -33,6 +38,12 @@ function App() {
           <Route path="inventory/models/new" element={<VehicleModelsForm />}></Route>
           <Route path="inventory/models" element={<VehicleModels />}></Route>
           <Route path="inventory/manufacturers" element={<Manufacturers />}></Route>
+          <Route path="services/appointments">
+            <Route path="" element= {<Appointments />} />
+            <Route path="new" element={<AppointmentForm />} />
+            <Route path="history" element={<AppointmentsHistory />} />
+          </Route>
+          <Route path="services/technician/new" element={<TechnicianForm />} />
         </Routes>
       </div>
     </BrowserRouter>
