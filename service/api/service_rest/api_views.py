@@ -95,3 +95,11 @@ def list_appointments(request, vin=None):
 
         return JsonResponse(appointment, encoder=AppointmentsListEncoder, safe=False)
 
+@require_http_methods(["GET"])
+def list_services(request):
+    services = Service.objects.all()
+    return JsonResponse(
+        {"services": services},
+        encoder=ServiceEncoder,
+        safe=False
+    )

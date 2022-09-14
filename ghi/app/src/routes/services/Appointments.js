@@ -32,7 +32,7 @@ class Appointments extends React.Component {
             
 
             this.setState({data})
-            console.log(this.state)
+            // console.log(this.state)
         }
         
     }
