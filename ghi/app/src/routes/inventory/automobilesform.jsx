@@ -7,7 +7,7 @@ class AutomibileForm extends React.Component {
         color:'',
         year:'',
         vin:'',
-        model:'',
+        model_id:'',
         models:[]
     };
 
@@ -51,7 +51,7 @@ class AutomibileForm extends React.Component {
         color:'',
         year:'',
         vin:'',
-        model:'',
+        model_id:'',
         models:[]
       });
     }
@@ -69,7 +69,7 @@ class AutomibileForm extends React.Component {
 
   handleChangeModel(event) {
     const value = event.target.value;
-    this.setState({ model: value });
+    this.setState({ model_id: value });
   }
 
   handleChangeVin(event) {
@@ -98,10 +98,10 @@ class AutomibileForm extends React.Component {
               </div>
               <div className="mb-3">
                 <select onChange={this.handleChangeModel} required name="location" id="location" className="form-select">
-                  <option value="">Choose a model</option>
-                  {this.state.models.map(model => {
+                  <option value="">Choose a model_id</option>
+                  {this.state.models.map(model_id => {
                     return (
-                      <option key={model.id} value={model.id}>{model.name}</option>
+                      <option key={model_id.id} value={model_id.id}>{model_id.name}</option>
                     )
                   })}
                 </select>
