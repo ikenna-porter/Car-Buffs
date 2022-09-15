@@ -11,7 +11,7 @@ function Nav() {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item dropdown">
-          <NavLink className="nav-link dropdown-toggle" to="/sales" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <NavLink style={{color:"black"}}className="nav-link dropdown-toggle" to="/sales" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Sales
           </NavLink>
           <ul className="dropdown-menu">
