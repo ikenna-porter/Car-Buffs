@@ -26,6 +26,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
+<<<<<<< HEAD
           <Route path="inventory">
             <Route path="automobiles">
               <Route path = "" element = {<Automobiles/>} />
@@ -46,6 +47,26 @@ function App() {
           <Route path = "/sales/representatives" element = {<Representatives/>}/>
           <Route path = "/sales/representatives/:id" element = {<Representative/>}/>
           <Route path = "/sales/transactions" element = {<Sales/>}/>
+=======
+          <Route path="/inventory/automobiles/new" element = {<AutomibileForm />}/>
+          <Route path = "/inventory/manufacturers/new" element={<ManufacturersForm/>}/>
+          <Route path = "/inventory/automobiles" element = {<Automobiles/>}/>
+          <Route path = "sales">
+            <Route path = "customers/new" element = {<CustomerForm/>}/>
+            <Route path = "representatives">
+              <Route path = "" element = {<Representatives/>}/>
+              <Route path = "new" element = {<RepresentativesForm/>}/>
+              <Route path = ":id" element = {<Representative/>}/>
+            </Route>
+            <Route path = "transactions">
+              <Route path = "" element = {<Sales/>}/>
+              <Route path = "new" element = {<SalesForm/>}/>
+            </Route>
+          </Route>
+          <Route path="inventory/models/new" element={<VehicleModelsForm />}></Route>
+          <Route path="inventory/models" element={<VehicleModels />}></Route>
+          <Route path="inventory/manufacturers" element={<Manufacturers />}></Route>
+>>>>>>> refs/remotes/origin/main
           <Route path="services/appointments">
             <Route path="" element= {<Appointments />} />
             <Route path="new" element={<AppointmentForm />} />
