@@ -26,7 +26,6 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-<<<<<<< HEAD
           <Route path="inventory">
             <Route path="automobiles">
               <Route path = "" element = {<Automobiles/>} />
@@ -41,16 +40,6 @@ function App() {
               <Route path="new" element={<ManufacturersForm/>} />
             </Route>
           </Route>
-          <Route path = "/sales/customers/new" element = {<CustomerForm/>}/>
-          <Route path = "/sales/representatives/new" element = {<RepresentativesForm/>}/>
-          <Route path = "/sales/transactions/new" element = {<SalesForm/>}/>
-          <Route path = "/sales/representatives" element = {<Representatives/>}/>
-          <Route path = "/sales/representatives/:id" element = {<Representative/>}/>
-          <Route path = "/sales/transactions" element = {<Sales/>}/>
-=======
-          <Route path="/inventory/automobiles/new" element = {<AutomibileForm />}/>
-          <Route path = "/inventory/manufacturers/new" element={<ManufacturersForm/>}/>
-          <Route path = "/inventory/automobiles" element = {<Automobiles/>}/>
           <Route path = "sales">
             <Route path = "customers/new" element = {<CustomerForm/>}/>
             <Route path = "representatives">
@@ -63,16 +52,13 @@ function App() {
               <Route path = "new" element = {<SalesForm/>}/>
             </Route>
           </Route>
-          <Route path="inventory/models/new" element={<VehicleModelsForm />}></Route>
-          <Route path="inventory/models" element={<VehicleModels />}></Route>
-          <Route path="inventory/manufacturers" element={<Manufacturers />}></Route>
->>>>>>> refs/remotes/origin/main
           <Route path="services/appointments">
             <Route path="" element= {<Appointments />} />
+            <Route path="technician/new" element={<TechnicianForm />} />
             <Route path="new" element={<AppointmentForm />} />
             <Route path="history" element={<AppointmentsHistory />} />
           </Route>
-          <Route path="services/technician/new" element={<TechnicianForm />} />
+
         </Routes>
       </div>
     </BrowserRouter>
