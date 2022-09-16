@@ -118,11 +118,11 @@ class SalesForm extends React.Component {
             <h1>Create a new sales record</h1>
             <form onSubmit={this.handleSubmit} id="create-transaction-form">
               <div className="form-floating mb-3">
-                <input onChange={this.handleChangePrice} placeholder="Price" required type="number" name="price" id="price" className="form-control" />
+                <input onChange={this.handleChangePrice} value = {this.state.price} placeholder="Price" required type="number" name="price" id="price" className="form-control" />
                 <label htmlFor="price">Price</label>
               </div>
               <div className="mb-3">
-                <select onChange={this.handleChangeAutomobile} required name="car" id="car" className="form-select">
+                <select onChange={this.handleChangeAutomobile} value={this.state.car} required name="car" id="car" className="form-select">
                   <option value="">Choose a car</option>
                   {this.state.automobiles.map(automobile => {
                     return (
@@ -132,7 +132,7 @@ class SalesForm extends React.Component {
                 </select>
               </div>
               <div className="mb-3">
-                <select onChange={this.handleChangeCustomer} required name="customer" id="customer" className="form-select">
+                <select onChange={this.handleChangeCustomer} value={this.state.customer} required name="customer" id="customer" className="form-select">
                   <option value="">Choose a customer</option>
                   {this.state.customers.map(customer => {
                     return (
@@ -142,7 +142,7 @@ class SalesForm extends React.Component {
                 </select>
               </div>
               <div className="mb-3">
-                <select onChange={this.handleChangeRepresentative} required name="representative" id="representative" className="form-select">
+                <select onChange={this.handleChangeRepresentative}value={this.state.rep} required name="representative" id="representative" className="form-select">
                   <option value="">Choose a model</option>
                   {this.state.representatives.map(rep => {
                     return (
