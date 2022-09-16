@@ -10,22 +10,18 @@ class AppointmentForm extends React.Component {
             time: '',
             technician: '',
             service: '',
-            services: [],
             technicians: [],
         }
     }
 
     async componentDidMount() {
-        const servicesResponse = await fetch("http://localhost:8080/api/services/")
         const techniciansResponse = await fetch("http://localhost:8080/api/technicians/")
 
-        if (servicesResponse.ok && techniciansResponse.ok) {
-            const servicesData = await servicesResponse.json()
+        if (techniciansResponse.ok) {
             const techniciansData = await techniciansResponse.json()
 
             this.setState({
                 ...this.state,
-                ...servicesData,
                 ...techniciansData
             })
         }
@@ -36,7 +32,7 @@ class AppointmentForm extends React.Component {
 
         //Create copy of the state, store it in data variable and delete unncessary properties that don't match with database's appointment properties
         const data = {...this.state}
-        delete data.services
+        // delete data.services
         delete data.technicians
 
         //Post to appropriate API
@@ -93,7 +89,11 @@ class AppointmentForm extends React.Component {
                       <label htmlFor="time">Time</label>
                     </div>
                     <div className="mb-3">
-                      <select onChange={this.handleChange} required value='' name="technician" id="technician" className="form-select">
+                    <div className="form-floating mb-3">
+                      <input onChange={this.handleChange} placeholder="service" value={this.state.service} required type="text" name="service" id="service" className="form-control" />
+                      <label htmlFor="service">Service</label>
+                    </div>
+                      <select onChange={this.handleChange} required value={this.state.technician} name="technician" id="technician" className="form-select">
                         <option value="">Choose a Technician</option>
                         {this.state.technicians.map(technician => {
                           return (
@@ -104,7 +104,7 @@ class AppointmentForm extends React.Component {
                         })}
                       </select>
                     </div>
-                    <div className="mb-3">
+                    {/* <div className="mb-3">
                       <select onChange={this.handleChange} value ='' required name="service" id="service" className="form-select">
                         <option value="">Reason for Appointment</option>
                         {this.state.services.map(service => {
@@ -113,7 +113,7 @@ class AppointmentForm extends React.Component {
                           )
                         })}
                       </select>
-                    </div>
+                    </div> */}
                     <button className="btn btn-primary">Create</button>
                   </form>
                 </div>
