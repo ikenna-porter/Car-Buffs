@@ -29,8 +29,6 @@ class CustomerForm extends React.Component {
     };
     const response = await fetch(autoUrl, fetchConfig);
     if (response.ok) {
-      const newAutomobile = await response.json();
-      console.log(newAutomobile);
       this.setState({
         name:'',
         address:'',
