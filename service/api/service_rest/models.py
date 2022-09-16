@@ -15,7 +15,7 @@ class Appointment(models.Model):
     date = models.DateField()
     time = models.TimeField()
     technician = models.ForeignKey("Technician", on_delete=models.PROTECT, related_name="appointments")
-    service = models.ForeignKey("Service", on_delete=models.PROTECT, related_name="appointments")
+    service = models.CharField(max_length=100)
 
     def get_api_url(self):
         return reverse("appointment_detail", kwargs={"vin": self.automobile})
@@ -30,9 +30,3 @@ class AutomobileVO(models.Model):
 
     def __str__(self):
         return str(self.vin)
-
-class Service(models.Model):
-    name = models.CharField(max_length=250)
-
-    def __str__(self):
-        return self.name

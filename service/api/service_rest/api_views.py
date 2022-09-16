@@ -1,5 +1,5 @@
 from django.views.decorators.http import require_http_methods
-from .models import Appointment, Technician, AutomobileVO, Service
+from .models import Appointment, Technician, AutomobileVO
 from django.http import JsonResponse
 from common.json import ModelEncoder, DateEncoder
 import json
@@ -15,10 +15,6 @@ class TechnicianEncoder(ModelEncoder):
 class AutomobileVOEncoder (ModelEncoder):
     model = AutomobileVO
     properties = ["vin", "vip"]
-
-class ServiceEncoder(ModelEncoder):
-    model = Service
-    properties = ["name"]
 
 class AppointmentsListEncoder(ModelEncoder):
     model = Appointment
@@ -37,16 +33,8 @@ class AppointmentsListEncoder(ModelEncoder):
 
     encoders = {
         "technician" : TechnicianEncoder(), 
-        "service": ServiceEncoder(), 
         "automobile": AutomobileVOEncoder(),
         }
-
-
-
-# @require_http_methods(["GET"])
-# def service_list(request):
-#     service = Service.objects.all()
-#     return JsonResponse({"service": service}, encoder=ServiceEncoder, safe=False)
 
 
 @require_http_methods(["GET"])
@@ -82,20 +70,11 @@ def list_appointments(request):
 
         content["automobile"] = AutomobileVO.objects.get(vin=content["automobile"])
         content["technician"] = Technician.objects.get(employee_id=content["technician"])
-        content["service"] = Service.objects.get(name=content["service"])
+        # content["service"] = Service.objects.get(name=content["service"])
 
         appointment = Appointment.objects.create(**content)
 
         return JsonResponse(appointment, encoder=AppointmentsListEncoder, safe=False)
-
-@require_http_methods(["GET"])
-def list_services(request):
-    services = Service.objects.all()
-    return JsonResponse(
-        {"services": services},
-        encoder=ServiceEncoder,
-        safe=False
-    )
 
 @require_http_methods(["GET", "DELETE"])
 def appointment_detail(request, vin=None):

@@ -5,7 +5,7 @@ class TechnicianForm extends React.Component {
         super()
         this.state = {
             name: '',
-            employee_id: 0,
+            employee_id: '',
         }
     }
 
@@ -32,7 +32,7 @@ class TechnicianForm extends React.Component {
 
         this.setState({
             name: '',
-            employee_id: 0,
+            employee_id: '',
         });
     
     }
@@ -55,7 +55,7 @@ class TechnicianForm extends React.Component {
                       <label htmlFor="name">Name</label>
                     </div>
                     <div className="form-floating mb-3">
-                      <input onChange={this.handleChange} value="" placeholder="Employee ID" required type="number" name="employee_id" id="employee_id" className="form-control" />
+                      <input onChange={this.handleChange} value={this.state.employee_id} placeholder="Employee ID" required type="number" name="employee_id" id="employee_id" className="form-control" />
                       <label htmlFor="employee_id">Employee ID</label>
                     </div>
                     <button className="btn btn-primary">Create</button>

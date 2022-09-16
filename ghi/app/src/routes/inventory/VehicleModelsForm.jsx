@@ -18,9 +18,10 @@ class VehicleModelsForm extends React.Component {
             let data = await response.json()
             this.setState({
                 ...this.state,
-                ...data
+                ...data,
             })
         }
+
     }
 
     handleFormChange = e => {
@@ -35,9 +36,7 @@ class VehicleModelsForm extends React.Component {
         const url = "http://localhost:8100/api/models/";
         const data = {...this.state}
         delete data.manufacturers
-
-        console.log(this.state)
-
+        
         const fetchConfig = {
             method: "POST",
             header: {'Content-Type': 'application/json'},
@@ -51,10 +50,11 @@ class VehicleModelsForm extends React.Component {
                 name: '',
                 picture_url: '',
                 manufacturer_id: '',
-                // manufacturers: []
+                id: '',
             })
         }
     }
+
 
     render() {
         return (
@@ -67,11 +67,11 @@ class VehicleModelsForm extends React.Component {
                     <input type="url" onChange={this.handleFormChange} value={this.state.picture_url} className="form-control" id="picture_url" name="picture_url" placeholder="Picture URL" />
                 </div>
                 <div className="form-group m-3">
-                    <select className="form-control" onChange={this.handleFormChange} value='' id="manufacturer_id" name="manufacturer_id" placeholder="Choose a manufacturer">
+                    <select className="form-control" onChange={this.handleFormChange} value={this.state.manufacturer_id} id="manufacturer_id" name="manufacturer_id" placeholder="Choose a manufacturer">
                         <option>Choose a manufacturer</option>
                         {this.state.manufacturers.map( manufacturer => {
                             return (
-                                <option key={manufacturer.id} value={parseInt(manufacturer.id)}>{manufacturer.name}</option>
+                                <option key={manufacturer.id} value={manufacturer.id}> {manufacturer.name} </option>
                             )
                         })}
                     </select>
