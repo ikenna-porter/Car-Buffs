@@ -21,7 +21,6 @@ class VehicleModelsForm extends React.Component {
                 ...data
             })
         }
-
     }
 
     handleFormChange = e => {
