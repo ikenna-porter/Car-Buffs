@@ -77,11 +77,41 @@ class SalesForm extends React.Component {
         price:'',
         rep:'',
         car:'',
-        automobiles:[],
-        customers:[],
-        representatives:[]
+        // automobiles:[],
+        // customers:[],
+        // representatives:[]
         
       });
+      const carsUrl = 'http://localhost:8090/api/cars/forsale'
+
+      const carsResponse = await fetch(carsUrl)
+  
+      if (carsResponse.ok) {
+        const carsData = await carsResponse.json()
+        console.log(carsData.cars)
+        this.setState({ automobiles: carsData })
+      }
+  
+      const customersUrl = 'http://localhost:8090/api/customers'
+  
+      const customerResponse = await fetch(customersUrl)
+  
+      if (customerResponse.ok){
+          const customerData = await customerResponse.json()
+          console.log(customerData.customers)
+          this.setState({ customers:customerData })
+      }
+  
+      const representativesUrl = 'http://localhost:8090/api/reps'
+  
+      const representativesResponse = await fetch(representativesUrl)
+  
+      if (representativesResponse.ok){
+          const representativesData = await representativesResponse.json()
+          console.log(representativesData.reps)
+          this.setState({representatives:representativesData})
+      }
+    
     }
   }
 
@@ -107,7 +137,7 @@ class SalesForm extends React.Component {
 
   render() {
 
-    if (this.state.automobiles===undefined||this.state.customers===undefined||this.state.representatives===undefined){
+    if (this.state.automobiles===undefined||this.state.customers===undefined||this.state.representatives===undefined||this.state.automobiles===[]||this.state.customers===[]||this.state.representatives===[]){
         return 'Loading...'
     }
 
@@ -122,8 +152,8 @@ class SalesForm extends React.Component {
                 <label htmlFor="price">Price</label>
               </div>
               <div className="mb-3">
-                <select onChange={this.handleChangeAutomobile} value={this.state.car} required name="car" id="car" className="form-select">
-                  <option value="">Choose a car</option>
+                <select onChange={this.handleChangeAutomobile} value = {this.state.car} required name="car" id="car" className="form-select">
+                  <option value='' >Choose a car</option>
                   {this.state.automobiles.map(automobile => {
                     return (
                       <option key={automobile.vin} value={automobile.vin}>{automobile.color} {automobile.year} {automobile.make} {automobile.model}</option>
@@ -133,7 +163,7 @@ class SalesForm extends React.Component {
               </div>
               <div className="mb-3">
                 <select onChange={this.handleChangeCustomer} value={this.state.customer} required name="customer" id="customer" className="form-select">
-                  <option value="">Choose a customer</option>
+                  <option value=''>Choose a customer</option>
                   {this.state.customers.map(customer => {
                     return (
                       <option key={customer.phone_number} value={customer.phone_number}>{customer.name}</option>
@@ -142,8 +172,8 @@ class SalesForm extends React.Component {
                 </select>
               </div>
               <div className="mb-3">
-                <select onChange={this.handleChangeRepresentative}value={this.state.rep} required name="representative" id="representative" className="form-select">
-                  <option value="">Choose a model</option>
+                <select onChange={this.handleChangeRepresentative} value = {this.state.rep} required name="representative" id="representative" className="form-select">
+                  <option value=''>Choose a representative</option>
                   {this.state.representatives.map(rep => {
                     return (
                       <option key={rep.employee_num} value={rep.employee_num}>{rep.name}</option>

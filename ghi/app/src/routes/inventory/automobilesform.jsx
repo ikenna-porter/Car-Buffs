@@ -52,7 +52,6 @@ class AutomibileForm extends React.Component {
         year:'',
         vin:'',
         model_id:'',
-        models:[]
       });
     }
   }
