@@ -20,6 +20,7 @@ function Nav() {
             <li><NavLink className="dropdown-item" to="/sales/representatives">Sales representatives</NavLink></li>
             <li><NavLink className="dropdown-item" to="/sales/representatives/new">New representative</NavLink></li>
             <li><NavLink className="dropdown-item" to="/sales/customers/new">New customer</NavLink></li>
+            
           </ul>
         </li>
         <li className="nav-item dropdown">
@@ -44,6 +45,7 @@ function Nav() {
             <li><NavLink className="dropdown-item" to="/inventory/manufacturers/new">New Manufacturer</NavLink></li>
             <li><NavLink className="dropdown-item" to="/inventory/models">Vehicle Models</NavLink></li>
             <li><NavLink className="dropdown-item" to="/inventory/models/new">New Model</NavLink></li>
+            
           </ul>
         </li>
         

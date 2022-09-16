@@ -26,9 +26,20 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/inventory/automobiles/new" element = {<AutomibileForm />}/>
-          <Route path = "/inventory/manufacturers/new" element={<ManufacturersForm/>}/>
-          <Route path = "/inventory/automobiles" element = {<Automobiles/>}/>
+          <Route path="inventory">
+            <Route path="automobiles">
+              <Route path = "" element = {<Automobiles/>} />
+              <Route path="new" element = {<AutomibileForm />} />
+            </Route>
+            <Route path="models">
+              <Route path="" element={<VehicleModels />} />
+              <Route path="new" element={<VehicleModelsForm />} />
+            </Route>
+            <Route path="manufacturers">
+              <Route path="" element={<Manufacturers />} />
+              <Route path="new" element={<ManufacturersForm/>} />
+            </Route>
+          </Route>
           <Route path = "sales">
             <Route path = "customers/new" element = {<CustomerForm/>}/>
             <Route path = "representatives">
@@ -41,15 +52,13 @@ function App() {
               <Route path = "new" element = {<SalesForm/>}/>
             </Route>
           </Route>
-          <Route path="inventory/models/new" element={<VehicleModelsForm />}></Route>
-          <Route path="inventory/models" element={<VehicleModels />}></Route>
-          <Route path="inventory/manufacturers" element={<Manufacturers />}></Route>
           <Route path="services/appointments">
             <Route path="" element= {<Appointments />} />
+            <Route path="technician/new" element={<TechnicianForm />} />
             <Route path="new" element={<AppointmentForm />} />
             <Route path="history" element={<AppointmentsHistory />} />
           </Route>
-          <Route path="services/technician/new" element={<TechnicianForm />} />
+
         </Routes>
       </div>
     </BrowserRouter>
