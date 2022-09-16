@@ -44,7 +44,6 @@ class AutomobileForm extends React.Component {
     };
     const response = await fetch(autoUrl, fetchConfig);
     if (response.ok) {
-      const newAutomobile = await response.json();
 
       this.setState({
         color:'',

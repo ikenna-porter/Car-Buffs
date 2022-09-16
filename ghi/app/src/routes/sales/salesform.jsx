@@ -27,7 +27,6 @@ class SalesForm extends React.Component {
 
     if (carsResponse.ok) {
       const carsData = await carsResponse.json()
-      console.log(carsData.cars)
       this.setState({ automobiles: carsData })
     }
 
@@ -37,7 +36,6 @@ class SalesForm extends React.Component {
 
     if (customerResponse.ok){
         const customerData = await customerResponse.json()
-        console.log(customerData.customers)
         this.setState({ customers:customerData })
     }
 
@@ -47,7 +45,6 @@ class SalesForm extends React.Component {
 
     if (representativesResponse.ok){
         const representativesData = await representativesResponse.json()
-        console.log(representativesData.reps)
         this.setState({representatives:representativesData})
     }
   }
@@ -70,8 +67,6 @@ class SalesForm extends React.Component {
     };
     const response = await fetch(autoUrl, fetchConfig)
     if (response.ok) {
-      const newAutomobile = await response.json()
-      console.log(newAutomobile)
       this.setState({
         customer:'',
         price:'',
@@ -88,7 +83,6 @@ class SalesForm extends React.Component {
   
       if (carsResponse.ok) {
         const carsData = await carsResponse.json()
-        console.log(carsData.cars)
         this.setState({ automobiles: carsData })
       }
   
@@ -98,7 +92,6 @@ class SalesForm extends React.Component {
   
       if (customerResponse.ok){
           const customerData = await customerResponse.json()
-          console.log(customerData.customers)
           this.setState({ customers:customerData })
       }
   
@@ -108,7 +101,6 @@ class SalesForm extends React.Component {
   
       if (representativesResponse.ok){
           const representativesData = await representativesResponse.json()
-          console.log(representativesData.reps)
           this.setState({representatives:representativesData})
       }
     

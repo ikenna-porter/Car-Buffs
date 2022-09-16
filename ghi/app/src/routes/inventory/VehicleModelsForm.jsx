@@ -2,13 +2,13 @@ import React from 'react'
 
 class VehicleModelsForm extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             manufacturers: [],
             name: '',
             picture_url: '',
             manufacturer_id: '',
-        };
+        }
     }
 
     componentDidMount = async e => {
@@ -16,7 +16,6 @@ class VehicleModelsForm extends React.Component {
 
         if (response.ok) {
             let data = await response.json()
-
             this.setState({
                 ...this.state,
                 ...data,

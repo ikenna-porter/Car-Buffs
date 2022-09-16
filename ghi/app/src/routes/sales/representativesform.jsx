@@ -27,8 +27,6 @@ class RepresentativesForm extends React.Component {
     };
     const response = await fetch(repUrl, fetchConfig);
     if (response.ok) {
-      const newAutomobile = await response.json();
-      console.log(newAutomobile);
       this.setState({
         name:'',
         employee_num:''
