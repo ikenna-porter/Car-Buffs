@@ -21,3 +21,8 @@ Representative model: Keeps track of the name and Employee ID number of a sales 
 Customer Model: Keeps track of the name of a potential customer, their address, and their phone number. The phone number must be unique and is used to identify the customer for api requests and communication with the front end.
 
 Transaction Records Model: Keeps track of transactions including the sales representative, the customer, the automobile, and the price it was sold for. The transaction ID is used to communicate with the front end as its unique identifier.
+
+
+
+let data = await response.json()
+data = data.manufacturers

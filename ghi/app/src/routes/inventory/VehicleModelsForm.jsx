@@ -2,20 +2,20 @@ import React from 'react'
 
 class VehicleModelsForm extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             manufacturers: [],
             name: '',
             picture_url: '',
             manufacturer_id: '',
-        };
+        }
     }
 
     componentDidMount = async e => {
         const response = await fetch("http://localhost:8100/api/manufacturers/");
 
         if (response.ok) {
-            const data = await response.json()
+            let data = await response.json()
             this.setState({
                 ...this.state,
                 ...data
