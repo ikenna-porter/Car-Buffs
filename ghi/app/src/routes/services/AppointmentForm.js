@@ -77,23 +77,23 @@ class AppointmentForm extends React.Component {
                   <h2 className="mb-3">Create an Appointment</h2>
                   <form onSubmit={this.handleSubmission} id="create-transaction-form">
                     <div className="form-floating mb-3">
-                      <input onChange={this.handleChange} placeholder="VIN" required type="text" name="automobile" id="automobile" className="form-control" />
+                      <input onChange={this.handleChange} placeholder="VIN" value={this.state.automobile} required type="text" name="automobile" id="automobile" className="form-control" />
                       <label htmlFor="automobile">VIN</label>
                     </div>
                     <div className="form-floating mb-3">
-                      <input onChange={this.handleChange} placeholder="Vehicle Owner" required type="text" name="vehicle_owner" id="vehicle_owner" className="form-control" />
+                      <input onChange={this.handleChange} placeholder="Vehicle Owner" value={this.state.vehicle_owner} required type="text" name="vehicle_owner" id="vehicle_owner" className="form-control" />
                       <label htmlFor="vehicle_owner">Vehicle Owner</label>
                     </div>
                     <div className="form-floating mb-3">
-                      <input onChange={this.handleChange} placeholder="Date" required type="date" name="date" id="date" className="form-control" />
+                      <input onChange={this.handleChange} placeholder="Date" value={this.state.date} required type="date" name="date" id="date" className="form-control" />
                       <label htmlFor="date">Date</label>
                     </div>
                     <div className="form-floating mb-3">
-                      <input onChange={this.handleChange} placeholder="Time" required type="time" name="time" id="time" className="form-control" />
+                      <input onChange={this.handleChange} placeholder="Time" value={this.state.time} required type="time" name="time" id="time" className="form-control" />
                       <label htmlFor="time">Time</label>
                     </div>
                     <div className="mb-3">
-                      <select onChange={this.handleChange} required name="technician" id="technician" className="form-select">
+                      <select onChange={this.handleChange} required value='' name="technician" id="technician" className="form-select">
                         <option value="">Choose a Technician</option>
                         {this.state.technicians.map(technician => {
                           return (
@@ -105,7 +105,7 @@ class AppointmentForm extends React.Component {
                       </select>
                     </div>
                     <div className="mb-3">
-                      <select onChange={this.handleChange} required name="service" id="service" className="form-select">
+                      <select onChange={this.handleChange} value ='' required name="service" id="service" className="form-select">
                         <option value="">Reason for Appointment</option>
                         {this.state.services.map(service => {
                           return (

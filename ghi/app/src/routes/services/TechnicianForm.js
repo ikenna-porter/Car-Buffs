@@ -51,11 +51,11 @@ class TechnicianForm extends React.Component {
                   <h2 className="mb-3">Create a Technician</h2>
                   <form onSubmit={this.handleSubmission} id="create-automobile-form">
                     <div className="form-floating mb-3">
-                      <input onChange={this.handleChange} required type = 'text' className="form-control" id="name" name="name" placeholder='Name'></input>
+                      <input onChange={this.handleChange} value={this.state.name} required type = 'text' className="form-control" id="name" name="name" placeholder='Name'></input>
                       <label htmlFor="name">Name</label>
                     </div>
                     <div className="form-floating mb-3">
-                      <input onChange={this.handleChange} placeholder="Employee ID" required type="number" name="employee_id" id="employee_id" className="form-control" />
+                      <input onChange={this.handleChange} value="" placeholder="Employee ID" required type="number" name="employee_id" id="employee_id" className="form-control" />
                       <label htmlFor="employee_id">Employee ID</label>
                     </div>
                     <button className="btn btn-primary">Create</button>

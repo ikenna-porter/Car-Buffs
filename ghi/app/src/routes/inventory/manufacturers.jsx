@@ -17,7 +17,6 @@ class Manufacturers extends React.Component {
                 ...this.state,
                 ...data
             })
-            console.log(this.state)
         }
     }
 
