@@ -20,7 +20,6 @@ class VehicleModelsForm extends React.Component {
                 ...this.state,
                 ...data
             })
-            console.log(this.state);
         }
 
     }
@@ -36,7 +35,9 @@ class VehicleModelsForm extends React.Component {
 
         const url = "http://localhost:8100/api/models/";
         const data = {...this.state}
-        delete data.manufacturers;
+        delete data.manufacturers
+
+        console.log(this.state)
 
         const fetchConfig = {
             method: "POST",
@@ -51,6 +52,7 @@ class VehicleModelsForm extends React.Component {
                 name: '',
                 picture_url: '',
                 manufacturer_id: '',
+                // manufacturers: []
             })
         }
     }
@@ -60,13 +62,13 @@ class VehicleModelsForm extends React.Component {
             <form onSubmit={this.handleFormSubmission}>
                 <h2 className="m-5">Create a Vehicle Model</h2>
                 <div className="form-group m-3">
-                    <input type="text" onChange={this.handleFormChange} className="form-control" id="name" name="name" placeholder="Name" />
+                    <input type="text" onChange={this.handleFormChange} value={this.state.name} className="form-control" id="name" name="name" placeholder="Name" />
                 </div>
                 <div className="form-group m-3">
-                    <input type="url" onChange={this.handleFormChange} className="form-control" id="picture_url" name="picture_url" placeholder="Picture URL" />
+                    <input type="url" onChange={this.handleFormChange} value={this.state.picture_url} className="form-control" id="picture_url" name="picture_url" placeholder="Picture URL" />
                 </div>
                 <div className="form-group m-3">
-                    <select className="form-control" onChange={this.handleFormChange} id="manufacturer_id" name="manufacturer_id" placeholder="Choose a manufacturer">
+                    <select className="form-control" onChange={this.handleFormChange} value='' id="manufacturer_id" name="manufacturer_id" placeholder="Choose a manufacturer">
                         <option>Choose a manufacturer</option>
                         {this.state.manufacturers.map( manufacturer => {
                             return (

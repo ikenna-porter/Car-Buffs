@@ -27,7 +27,6 @@ class ManufacturersForm extends React.Component {
     const response = await fetch(manufacturerUrl, fetchConfig);
     if (response.ok) {
       const newAutomobile = await response.json();
-      console.log(newAutomobile);
       this.setState({
         name:'',
       });

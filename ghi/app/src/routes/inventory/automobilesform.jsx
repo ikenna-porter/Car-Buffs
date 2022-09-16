@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AutomibileForm extends React.Component {
+class AutomobileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,7 +25,6 @@ class AutomibileForm extends React.Component {
 
     if (modelsResponse.ok) {
       const modelsData = await modelsResponse.json();
-      console.log(modelsData.models)
       this.setState({ models: modelsData.models });
     }
   }
@@ -46,7 +45,7 @@ class AutomibileForm extends React.Component {
     const response = await fetch(autoUrl, fetchConfig);
     if (response.ok) {
       const newAutomobile = await response.json();
-      console.log(newAutomobile);
+
       this.setState({
         color:'',
         year:'',
@@ -115,4 +114,4 @@ class AutomibileForm extends React.Component {
   }
 }
 
-export default AutomibileForm;
+export default AutomobileForm;
