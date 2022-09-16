@@ -51,7 +51,6 @@ class AutomobileForm extends React.Component {
         year:'',
         vin:'',
         model_id:'',
-        models:[]
       });
     }
   }
@@ -84,19 +83,19 @@ class AutomobileForm extends React.Component {
             <h1>Create a new automobile</h1>
             <form onSubmit={this.handleSubmit} id="create-automobile-form">
               <div className="form-floating mb-3">
-                <input onChange={this.handleChangeYear} placeholder="Year" required type="number" name="year" id="year" className="form-control" />
+                <input onChange={this.handleChangeYear} value = {this.state.year} placeholder="Year" required type="number" name="year" id="year" className="form-control" />
                 <label htmlFor="year">Year</label>
               </div>
               <div className="mb-3">
                 <label htmlFor="color">Color</label>
-                <input onChange={this.handleChangeColor} required type = 'text' className="form-control" id="color" name="color"></input>
+                <input onChange={this.handleChangeColor} value = {this.state.color} required type = 'text' className="form-control" id="color" name="color"></input>
               </div>
               <div className="form-floating mb-3">
-                <input onChange={this.handleChangeVin} placeholder="VIN" required type="text" name="vin" id="vin" className="form-control" />
+                <input onChange={this.handleChangeVin} value = {this.state.vin} placeholder="VIN" required type="text" name="vin" id="vin" className="form-control" />
                 <label htmlFor="vin">VIN</label>
               </div>
               <div className="mb-3">
-                <select onChange={this.handleChangeModel} required name="location" id="location" className="form-select">
+                <select onChange={this.handleChangeModel} value = {this.state.model_id} required name="location" id="location" className="form-select">
                   <option value="">Choose a model_id</option>
                   {this.state.models.map(model_id => {
                     return (

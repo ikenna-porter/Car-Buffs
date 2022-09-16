@@ -55,10 +55,10 @@ class RepresentativesForm extends React.Component {
             <form onSubmit={this.handleSubmit} id="create-automobile-form">
             <div className="mb-3">
                 <label htmlFor="name">Name</label>
-                <input onChange={this.handleChangeName} required type = 'text' className="form-control" id="name" name="name"></input>
+                <input onChange={this.handleChangeName} value = {this.state.name} required type = 'text' className="form-control" id="name" name="name"></input>
               </div>
               <div className="form-floating mb-3">
-                <input onChange={this.handleChangeEmployeeNumber} placeholder="Employee Number" required type="number" name="employee_number" id="employee_number" className="form-control" />
+                <input onChange={this.handleChangeEmployeeNumber} value = {this.state.employee_num} placeholder="Employee Number" required type="number" name="employee_number" id="employee_number" className="form-control" />
                 <label htmlFor="employee_number">Employee Number</label>
               </div>
               

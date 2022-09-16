@@ -48,7 +48,7 @@ class ManufacturersForm extends React.Component {
             <form onSubmit={this.handleSubmit} id="create-automobile-form">
               <div className="mb-3">
                 <label htmlFor="name">Name</label>
-                <input onChange={this.handleChangeName} required type = 'text' className="form-control" id="name" name="name"></input>
+                <input onChange={this.handleChangeName} value = {this.state.name} required type = 'text' className="form-control" id="name" name="name"></input>
               </div>
               <button className="btn btn-primary">Create</button>
             </form>

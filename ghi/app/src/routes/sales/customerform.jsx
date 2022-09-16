@@ -63,15 +63,15 @@ class CustomerForm extends React.Component {
             <form onSubmit={this.handleSubmit} id="create-automobile-form">
             <div className="mb-3">
                 <label htmlFor="name">Name</label>
-                <input onChange={this.handleChangeName} required type = 'text' className="form-control" id="name" name="name"></input>
+                <input onChange={this.handleChangeName} value = {this.state.name} required type = 'text' className="form-control" id="name" name="name"></input>
               </div>
               <div className="form-floating mb-3">
-                <input onChange={this.handleChangeAddress} placeholder="address" required type="text" name="address" id="address" className="form-control" />
+                <input onChange={this.handleChangeAddress} value = {this.state.address} placeholder="address" required type="text" name="address" id="address" className="form-control" />
                 <label htmlFor="address">Address</label>
               </div>
               
               <div className="form-floating mb-3">
-                <input onChange={this.handleChangePhoneNumber} placeholder="Phone Number" required type="text" name="phone_number" id="phone_number" className="form-control" />
+                <input onChange={this.handleChangePhoneNumber} value = {this.state.phone_number} placeholder="Phone Number" required type="text" name="phone_number" id="phone_number" className="form-control" />
                 <label htmlFor="phone_number">Phone Number</label>
               </div>
               <button className="btn btn-primary">Create</button>
