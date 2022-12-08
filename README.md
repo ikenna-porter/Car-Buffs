@@ -1,9 +1,14 @@
 # Car Buffs
 
-Team:
+## Set Up
+If you would like to run this application on your own computer, follow these instructions:
 
-* Ikenna - Service
-* Josh - Sales
+1) If you do not have Docker, install it: https://docs.docker.com/get-docker/
+2) Fork and clone the repository
+3) Once it's been cloned onto your machine, open the terminal and enter `docker volume create beta-data`
+4) Afterwards enter the command `docker compose build` to build the docker images for each container
+5) Run `docker compose up` to run each container
+6) Open your browser and type "localhost:3000" in the address box (you may need to wait a couple of minutes)
 
 ## Design
 
@@ -29,5 +34,11 @@ Transaction Records Model: Keeps track of transactions including the sales repre
 
 
 
+Creators:
+* Ikenna - Service
+* Josh - Sales
+
 let data = await response.json()
 data = data.manufacturers
+
+
