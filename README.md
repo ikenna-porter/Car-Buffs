@@ -34,11 +34,3 @@ Transaction Records Model: Keeps track of transactions including the sales repre
 
 
 
-Creators:
-* Ikenna - Service
-* Josh - Sales
-
-let data = await response.json()
-data = data.manufacturers
-
-
